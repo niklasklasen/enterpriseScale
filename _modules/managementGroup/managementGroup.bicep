@@ -4,7 +4,7 @@ param parManagementGroupId string
 param parManagementGroupName string
 param parParentId string
 
-resource managementGroup 'Microsoft.Management/managementGroups@2023-04-01' = {
+resource resManagementGroup 'Microsoft.Management/managementGroups@2023-04-01' = {
   name: parManagementGroupId
   properties: {
     displayName: parManagementGroupName
@@ -16,4 +16,4 @@ resource managementGroup 'Microsoft.Management/managementGroups@2023-04-01' = {
   }
 }
 
-output outManagementGroupId string = managementGroup.id
+output outManagementGroupId string = resManagementGroup.id
