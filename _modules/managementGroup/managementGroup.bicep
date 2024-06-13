@@ -10,7 +10,7 @@ resource resManagementGroup 'Microsoft.Management/managementGroups@2023-04-01' =
     displayName: parManagementGroupName
     details: {
       parent: {
-        id: parParentId
+        id: '/providers/Microsoft.Management/managementGroups/${parParentId}'
       }
     }
   }
