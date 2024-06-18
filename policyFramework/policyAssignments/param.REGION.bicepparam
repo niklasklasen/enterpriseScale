@@ -14,7 +14,7 @@ var varMangmtGroupIds = {
   sandbox: 'contoso-sandbox'
 }
 
-// var varTenantRootId = '4d7d49f0-57c4-41e8-86b7-74fe38a737a5'
+var varTenantRootId = '4d7d49f0-57c4-41e8-86b7-74fe38a737a5'
 
 
 // Policy Assignments - Built In Policies
@@ -261,4 +261,152 @@ param parPolicyAssignmentsBuiltIn = [
       }
     }
   }
+]
+
+
+param parPolicyAssignmentsCustom = [
+  {
+    definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policyDefinitions/Deny-Subnet-Without-Nsg'
+    scope: varMangmtGroupIds.landingZones
+    name: 'Deny-Subnet-Without-Nsg'
+    description: 'This policy denies the creation of a subnet without a Network Security Group. NSG help to protect traffic across subnet-level.'
+    displayName: 'Subnets should have a Network Security Group'
+    enforcementMode: 'Default'
+    idetityType: 'None'
+    userAssignedIdentity: {}
+    location: 'null'
+    parameters: {}
+  }
+  {
+    definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policyDefinitions/Deny-Subnet-Without-Nsg'
+    scope: varMangmtGroupIds.platformIdentity
+    name: 'Deny-Subnet-Without-Nsg'
+    description: 'This policy denies the creation of a subnet without a Network Security Group. NSG help to protect traffic across subnet-level.'
+    displayName: 'Subnets should have a Network Security Group'
+    enforcementMode: 'Default'
+    idetityType: 'None'
+    userAssignedIdentity: {}
+    location: 'null'
+    parameters: {}
+  }
+  {
+    definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policyDefinitions/Deny-VNET-Peer-Cross-Sub'
+    scope: varMangmtGroupIds.landingZonesOnline
+    name: 'Deny-VNET-Peer-Cross-Sub'
+    description: 'This policy denies the creation of vNet Peerings outside of the same subscriptions under the assigned scope.'
+    displayName: 'Deny vNet peering cross subscription.'
+    enforcementMode: 'Default'
+    idetityType: 'None'
+    userAssignedIdentity: {}
+    location: 'null'
+    parameters: {}
+  }
+  {
+    definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policyDefinitions/Deny-MgmtPorts-From-Internet'
+    scope: varMangmtGroupIds.landingZones
+    name: 'Deny-MgmtP-From-Inet'
+    description: 'This policy denies any network security rule that allows management port access from the Internet'
+    displayName: 'Management port access from the Internet should be blocked'
+    enforcementMode: 'Default'
+    idetityType: 'None'
+    userAssignedIdentity: {}
+    location: 'null'
+    parameters: {}
+  }
+  {
+    definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policyDefinitions/Deny-MgmtPorts-From-Internet'
+    scope: varMangmtGroupIds.platformIdentity
+    name: 'Deny-MgmtP-From-Inet'
+    description: 'This policy denies any network security rule that allows management port access from the Internet'
+    displayName: 'Management port access from the Internet should be blocked'
+    enforcementMode: 'Default'
+    idetityType: 'None'
+    userAssignedIdentity: {}
+    location: 'null'
+    parameters: {}
+  }
+  {
+    definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policySetDefinitions/Enforce-ALZ-Sandbox'
+    scope: varMangmtGroupIds.sandbox
+    name: 'Enforce-ALZ-Sandbox'
+    description: 'Enforce policies in the Sandbox Landing Zone.'
+    displayName: 'Enforce policies in the Sandbox Landing Zone.'
+    enforcementMode: 'Default'
+    idetityType: 'None'
+    userAssignedIdentity: {}
+    location: 'null'
+    parameters: {}
+  }
+  {
+  definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policySetDefinitions/Enforce-ALZ-Decomm'
+  scope: varMangmtGroupIds.decommissioned
+  name: 'Enforce-ALZ-Decomm'
+  description: 'Enforce policies in the Decommissioned Landing Zone'
+  displayName: 'Enforce policies in the Decommissioned Landing Zone'
+  enforcementMode: 'Default'
+  idetityType: 'SystemAssigned'
+  userAssignedIdentity: {}
+  location: 'westeurope'
+  parameters: {}
+}
+{
+  definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policySetDefinitions/Enforce-Guardrails-KeyVault'
+  scope: varMangmtGroupIds.landingZones
+  name: 'Enforce-GR-KeyVault'
+  description: 'This initiative assignment enables recommended ALZ guardrails for Azure Key Vault'
+  displayName: 'Enforce recommended guardrails for Azure Key Vault'
+  enforcementMode: 'Default'
+  idetityType: 'None'
+  userAssignedIdentity: {}
+  location: 'null'
+  parameters: {}
+}
+{
+  definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policySetDefinitions/Enforce-ACSB'
+  scope: varMangmtGroupIds.root
+  name: 'Enforce-ACSB'
+  description: 'This initiative assignment enables Azure Compute Security Baseline compliance auditing for Windows and Linux virtual machines.'
+  displayName: 'Enforce Azure Compute Security Baseline compliance auditing'
+  enforcementMode: 'Default'
+  idetityType: 'SystemAssigned'
+  userAssignedIdentity: {}
+  location: 'westeurope'
+  parameters: {}
+}
+{
+  definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policySetDefinitions/Audit-UnusedResources'
+  scope: varMangmtGroupIds.root
+  name: 'Audit-UnusedResources'
+  description: 'Optimize cost by detecting unused but chargeable resources. Leverage this Azure Policy Initiative as a cost control tool to reveal orphaned resources that are contributing cost.'
+  displayName: 'Audit unused or orphan resources'
+  enforcementMode: 'Default'
+  idetityType: 'None'
+  userAssignedIdentity: {}
+  location: 'null'
+  parameters: {}
+}
+{
+  definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policySetDefinitions/Enforce-EncryptTransit'
+  scope: varMangmtGroupIds.landingZones
+  name: 'Enforce-EncryptTransit'
+  description: 'Choose either Deploy if not exist and append in combination with audit or Select Deny in the Policy effect. Deny polices shift left. Deploy if not exist and append enforce but can be changed, and because missing existence condition require then the combination of Audit.'
+  displayName: 'Deny or Deploy and append TLS requirements and SSL enforcement on resources without Encryption in transit'
+  enforcementMode: 'Default'
+  idetityType: 'SystemAssigned'
+  userAssignedIdentity: {}
+  location: 'westeurope'
+  parameters: {}
+}
+{
+  definitionId: '/providers/Microsoft.Management/managementGroups/${varTenantRootId}/providers/Microsoft.Authorization/policySetDefinitions/Deny-PublicPaaSEndpoints'
+  scope: varMangmtGroupIds.landingZonesCorp
+  name: 'Deny-PublicPaaSEndpoints'
+  description: 'This policy initiative is a group of policies that prevents creation of Azure PaaS services with exposed public endpoints'
+  displayName: 'Public network access should be disabled for PaaS services'
+  enforcementMode: 'Default'
+  idetityType: 'SystemAssigned'
+  userAssignedIdentity: {}
+  location: 'westeurope'
+  parameters: {}
+}
 ]
