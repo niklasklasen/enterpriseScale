@@ -7,3 +7,4 @@ Deploy Policy Module - Definitions
 az deployment mg create --name "policy-definition" --location "swedencentral" --management-group-id "contoso" --template-file "policyFramework/policyDefinitions/main.bicep" --parameters "policyFramework/policyDefinitions/param.REGION.bicepparam"
 
 Deploy Policy Module - Assignments
+az deployment mg create --name "policy-assignment" --location "swedencentral" --management-group-id "contoso" --template-file "policyFramework/policyAssignments/main.bicep" --parameters "policyFramework/policyAssignments/param.REGION.bicepparam"

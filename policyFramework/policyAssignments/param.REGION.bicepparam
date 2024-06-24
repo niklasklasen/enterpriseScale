@@ -1,21 +1,21 @@
 using 'main.bicep'
 
+var varTopLevelMgmtGroup = 'contoso' // Top level in the Manamgement Group tree
+var varTenantRootId = 'contoso' // Management Group where custom policy definitions are deployed
+
 // Management Groups, used for policy scope
 var varMangmtGroupIds = {
-  root: 'contoso'
-  platform: 'contoso-platform'
-  platformIdentity: 'contoso-platform-identity'
-  platformManagement: 'contoso-platform-management'
-  platformConnectivity: 'contoso-platform-connectivity'
-  landingZones: 'contoso-landing-zones'
-  landingZonesCorp: 'contoso-landing-zones-corp'
-  landingZonesOnline: 'contoso-landing-zones-online'
-  decommissioned: 'contoso-decommisioned'
-  sandbox: 'contoso-sandbox'
+  root: varTopLevelMgmtGroup
+  platform: '${varTopLevelMgmtGroup}-platform'
+  platformIdentity: '${varTopLevelMgmtGroup}-identity'
+  platformManagement: '${varTopLevelMgmtGroup}-management'
+  platformConnectivity: '${varTopLevelMgmtGroup}-connectivity'
+  landingZones: '${varTopLevelMgmtGroup}-landingZone'
+  landingZonesCorp: '${varTopLevelMgmtGroup}-corp'
+  landingZonesOnline: '${varTopLevelMgmtGroup}-online'
+  decommissioned: '${varTopLevelMgmtGroup}-decommissioned'
+  sandbox: '${varTopLevelMgmtGroup}-sandbox'
 }
-
-var varTenantRootId = '4d7d49f0-57c4-41e8-86b7-74fe38a737a5'
-
 
 // Policy Assignments - Built In Policies
 param parPolicyAssignmentsBuiltIn = [
