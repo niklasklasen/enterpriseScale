@@ -1,6 +1,5 @@
 using 'main.bicep'
 
-// Development - Loop through all files in policyDefinitions
 var varTenantRootId = 'd7cfa7c7-1c24-448a-8f1d-01e4c1803842' // Tenant root variable must be the same as the scope that the custom policy definitions are deployed to.
 
 // Policy definition parameter
